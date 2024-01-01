@@ -2,14 +2,16 @@ import { inject } from "@angular/core"
 import { LoginService } from "../api/login.service"
 import { Router } from "@angular/router";
 
-export const CanActivate = () => {
+export const CanActivate = () =>{
     const loginService = inject(LoginService);
     const router = inject(Router);
 
-    if (loginService.isLoggedIn()) {
+    if(loginService.isLoggedIn())
+    {
         return true;
     }
-    else {
+    else
+    {
         router.navigateByUrl("/Login");
         return false;
     }

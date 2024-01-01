@@ -51,10 +51,10 @@ export class RegisterComponent {
         }).subscribe({
             next: (res) => {
                 this.notification.showSuccess("Your account was created successfully");
-                this.router.navigate(['Login']);
+                this.router.navigate(['/Login']);
             },
             error: (err) => {
-                this.notification.showApiError(err.errorMessage);
+                this.notification.showApiError(err);
             }
         });
     }

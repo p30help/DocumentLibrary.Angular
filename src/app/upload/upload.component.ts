@@ -30,29 +30,27 @@ export class UploadComponent {
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-
-          // Here you can access the real file
-          //console.log(droppedFile.relativePath, file);
-
-          this.uploadService.upload(droppedFile.relativePath, file).subscribe({
-            next: (res) => {
-              this.changeFileStatus(res.fileName, 1)
-            },
-            error: (err) => {
-              let msg = (err.error?.errorMessage != undefined) ? " - " + err.error?.errorMessage : "" ;
-              this.changeFileStatus(err.itemId, -1, "Server error" + msg);
-            }
-          });
-
-
-        });
+        fileEntry.file((file: File) => this.uploadFile(file) );
       }
     }
   }
 
-  private isFileValidate(file: NgxFileDropEntry): boolean {
+  uploadFile(file: File){
+
+    this.uploadService.upload(file.name, file).subscribe({
+      next: (res) => {
+        this.changeFileStatus(res.fileName, 1)
+      },
+      error: (err) => {
+        let msg = (err.error?.errorMessage != undefined) ? " - " + err.error?.errorMessage : "" ;
+        this.changeFileStatus(err.itemId, -1, "Server error" + msg);
+      }
+    });
+  }
+
+  isFileValidate(file: NgxFileDropEntry): boolean {
     var ext = file.relativePath.split('.').pop()?.toLowerCase();
+
     if (ext != null && this.allowdExtension.includes(ext!)) {
       return true
     }
@@ -78,10 +76,7 @@ export class UploadComponent {
 
 }
 
-
-
-
-class UploadingFile {
+export class UploadingFile {
   fileName!: string;
   status!: number;
   error?: string;

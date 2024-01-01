@@ -17,8 +17,6 @@ export class NotificationService {
 
     showApiError(err: any) {
 
-        console.log("Errr", err);
-
         var msg = "Unkown error";
 
         if (err.error != null) {

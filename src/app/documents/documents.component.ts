@@ -61,7 +61,7 @@ export class DocumentsComponent implements OnInit {
     }
 
     OnGenerateTempLink() {
-        if (this.currentDocument == null) {
+        if (this.currentDocument == null || this.currentDocument == undefined) {
             return;
         }
 
@@ -70,7 +70,8 @@ export class DocumentsComponent implements OnInit {
             return;
         }
 
-        this.generateTemporaryLinkService.call(this.currentDocument.id, this.selectedExpirationTime!).subscribe({
+        this.generateTemporaryLinkService.call(this.currentDocument.id, this.selectedExpirationTime!)
+        .subscribe({
             next: res => { this.temporaryLink = res.url },
             error: err => { this.notificationService.showApiError(err); }
         });

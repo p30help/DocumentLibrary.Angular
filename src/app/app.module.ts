@@ -19,7 +19,7 @@ import { RegisterService } from './services/api/register.service';
 import { UploadDocumentService } from './services/api/uploadDocument.service';
 import { FormsModule } from '@angular/forms';
 import { DocumentItemComponent } from './document-item/documentItem.component';
-import { Icon } from './icons/Icon.component';
+import { IconComponent } from './icons/Icon.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,7 @@ import { AuthClientService } from './services/api/authClient.service';
     DocumentsComponent,    
     UploadComponent,
     DocumentItemComponent,
-    Icon
+    IconComponent
   ],
   imports: [
     BrowserModule,

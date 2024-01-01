@@ -4,7 +4,7 @@ import { Component, Input } from "@angular/core";
     selector: 'app-icon',
     templateUrl: './icon.component.html'
 })
-export class Icon {
+export class IconComponent {
     @Input()
     type?: string = '';
 }

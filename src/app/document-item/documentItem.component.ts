@@ -28,7 +28,10 @@ export class DocumentItemComponent {
 
         this.downloadDocumentService.call(this.document!.id).subscribe({
             next: res => {
-                saveAs(res);
+                if(res != null)
+                {
+                    saveAs(res);
+                }
             },
             error: err => {
                 this.notificationService.showApiError("Error on downloading document");
