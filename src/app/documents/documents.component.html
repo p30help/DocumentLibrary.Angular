@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<main>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-1">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Your Documents</h1>
+          <p class="lead text-body-secondary">
+            You can see the list of your docuemnts, Also you can upload you new documents. We are here to keep your docuemnts forever...
+            </p>
+          <p>
+            <a routerLink="/Dashboard/Upload" class="btn btn-primary my-2">Upload New Documents</a>
+          </p>
+        </div>
+      </div>
+    </section>    
+
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+
+        <div class="row text-center" *ngIf="documents.length == 0">
+            <p class="lead mt-4">There are no documents yet :(</p>
+        </div>
+
+        <div *ngIf="documents.length > 0">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <app-document-item *ngFor="let doc of documents" [document]="doc" (generateTempLinkButtonClicked)="OngenerateTempLinkButtonClicked($event, content)">
+            </app-document-item>
+                      
+
+        </div>
+
+        <ngb-pagination  class="d-flex justify-content-center mt-5 " [collectionSize]="totalCount" [pageSize]="pageSize" (pageChange)="OnPageChange($event)" aria-label="Default pagination" />
+
+        </div>
+
+      </div>
+      
+
+    </div>
+
+    
+  
+  </main>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Generate Temporary Linke</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+      <select class="form-select" [(ngModel)]="selectedExpirationTime">
+        <option selected value="60">One Hour</option>
+        <option value="480">8 Hours</option>
+        <option value="1440">1 Day</option>
+        <option value="4320">3 Days</option>
+      </select>
+
+      <div class="d-grid gap-2 mt-4">
+        <button class="btn btn-primary" type="button" (click)="OnGenerateTempLink()">Generate</button>
+      </div>
+
+
+      <div class="input-group mb-3 mt-5" *ngIf="temporaryLink != undefined && temporaryLink != null">        
+        <input type="text" class="form-control" aria-label="Sizing example input" disabled readonly [(ngModel)]="temporaryLink">
+        <button class="btn btn-outline-secondary" type="button" (click)="CopyLinkToClipboard()" >Copy</button>
+      </div>
+    </div>
+  </ng-template>

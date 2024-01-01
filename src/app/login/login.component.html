@@ -1,0 +1,94 @@
+
+<h2 class="display-6 text-center mb-4">Document Library</h2>
+
+
+<div class="row" style="margin-top: 15%;" >
+  <!-- <div class="col-md-4 offset-md-4 align-self-center"> -->
+    <div class="col-md-4 offset-md-4 align-self-center">
+    
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="inputEmail">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mt-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="inputPass" >
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <!-- <div class="form-check text-start my-3">
+        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Remember me
+        </label>
+      </div> -->
+      <a class="btn btn-primary w-100 py-2 mt-4" (click)="OnLogin()">Login</a>
+      <a class="btn btn-outline-secondary w-100 py-2 mt-2" routerLink="/Register" >Create New Account</a>
+      <!-- <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p> -->
+    
+
+    </div>
+</div>
+
+
+<!-- <main class="form-signin w-100 m-auto">
+ 
+</main>
+  
+  <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Free</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 users included</li>
+              <li>2 GB of storage</li>
+              <li>Email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Pro</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>20 users included</li>
+              <li>10 GB of storage</li>
+              <li>Priority email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Enterprise</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>30 users included</li>
+              <li>15 GB of storage</li>
+              <li>Phone and email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </main> -->
