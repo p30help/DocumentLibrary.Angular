@@ -1,62 +1,58 @@
-
 <app-header></app-header>
 
 <main>
 
-    <section class="py-5 text-center container">
-      <div class="row py-lg-1">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Upload Documents</h1>
-          <p class="lead text-body-secondary">
-            Please upload you document without any concern :)
-            <br />
-            The Picture, Pdf, Word, Text, and Excel files are supported
-            </p>          
-        </div>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-1">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Upload Documents</h1>
+        <p class="lead text-body-secondary">
+          Please upload you document without any concern :)
+          <br />
+          The Picture, Pdf, Word, Text, and Excel files are supported
+        </p>
       </div>
-    </section>  
-    
-    <div class="center">
-        <!-- dropZoneClassName="drop-zone" -->
-        <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
-            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-              Drag and drop your documents here or 
-              <button type="button" class="btn btn-outline-primary ms-2" (click)="openFileSelector()">Browse Files</button>
-            </ng-template>
-        </ngx-file-drop>
+    </div>
+  </section>
 
-<h3 class="mt-5" *ngIf="files.length > 0" >Documents</h3>
-        
-<div class="d-flex flex-column flex-md-row align-items-center justify-content-center mb-5">  
+  <div class="center">
+    <!-- dropZoneClassName="drop-zone" -->
+    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
+      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+        Drag and drop your documents here or
+        <button type="button" class="btn btn-outline-primary ms-2" (click)="openFileSelector()">Browse Files</button>
+      </ng-template>
+    </ngx-file-drop>
 
-  <div class="list-group w-100"  >
-    <div class="list-group-item " aria-current="true" *ngFor="let item of files; let i=index">
-      
-      <div class="d-flex gap-2 w-100 justify-content-between">
-        <div class="w-100">
-          <h6 class="mb-0 mt-2">
-            {{ i + 1 }} - {{ item.fileName }}
-            <span *ngIf="item.error != null" class="text-danger"> ({{item.error}}) </span>
-          </h6>
+    <h3 class="mt-5" *ngIf="files.length > 0">Documents</h3>
 
-          <div  class="mt-2 mb-2 opacity-75 progress ">
-            <div *ngIf="item.status == 0" class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 50%"></div>
-            <div *ngIf="item.status == 1" class="progress-bar bg-success" style="width: 100%"></div>
-            <div *ngIf="item.status == -1" class="progress-bar bg-danger" style="width: 100%"></div>
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center mb-5">
+
+      <div class="list-group w-100">
+        <div class="list-group-item " aria-current="true" *ngFor="let item of files; let i=index">
+
+          <div class="d-flex gap-2 w-100 justify-content-between">
+            <div class="w-100">
+              <h6 class="mb-0 mt-2">
+                {{ i + 1 }} - {{ item.fileName }}
+                <span *ngIf="item.error != null" class="text-danger"> ({{item.error}}) </span>
+              </h6>
+
+              <div class="mt-2 mb-2 opacity-75 progress ">
+                <div *ngIf="item.status == 0" class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                  style="width: 50%"></div>
+                <div *ngIf="item.status == 1" class="progress-bar bg-success" style="width: 100%"></div>
+                <div *ngIf="item.status == -1" class="progress-bar bg-danger" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <small *ngIf="item.status == 0" class="opacity-50 text-nowrap text-primary">Uploading...</small>
+            <small *ngIf="item.status == 1" class="opacity-50 text-nowrap text-success">Compeleted</small>
+            <small *ngIf="item.status == -1" class="opacity-50 text-nowrap text-danger">Failed</small>
           </div>
         </div>
-
-        <small *ngIf="item.status == 0" class="opacity-50 text-nowrap text-primary">Uploading...</small>
-        <small *ngIf="item.status == 1" class="opacity-50 text-nowrap text-success">Compeleted</small>
-        <small *ngIf="item.status == -1" class="opacity-50 text-nowrap text-danger">Failed</small>
       </div>
-    </div>    
-  </div>
-</div>
-
-
-
     </div>
-    
-  
-  </main>
+  </div>
+
+</main>

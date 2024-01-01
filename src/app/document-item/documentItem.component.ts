@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output,  inject } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, inject } from "@angular/core";
 import { DocumentResponse } from "../services/api/responses/getListOfDocumentsResponse";
 import { DownloadDocumentService } from "../services/api/downloadDocument.service";
 import { NotificationService } from "../services/notification.service";
@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
     templateUrl: './documentItem.component.html',
     styleUrls: ['./documentItem.component.css']
 })
-export class DocumentItemComponent implements OnInit {
+export class DocumentItemComponent {
 
     private downloadDocumentService = inject(DownloadDocumentService);
     private notificationService = inject(NotificationService);
@@ -20,27 +20,19 @@ export class DocumentItemComponent implements OnInit {
     @Output()
     generateTempLinkButtonClicked = new EventEmitter<DocumentResponse>();
 
-    ngOnInit() {
-    }
-
-    OnGenerateTempLink(){
+    OnGenerateTempLink() {
         this.generateTempLinkButtonClicked.emit(this.document!);
     }
 
-    OnDownload(){
+    OnDownload() {
 
         this.downloadDocumentService.call(this.document!.id).subscribe({
             next: res => {
                 saveAs(res);
             },
-            error: err =>{
+            error: err => {
                 this.notificationService.showApiError("Error on downloading document");
             }
         });
     }
-
-    downloadFile(data: any) {
-        const url= window.URL.createObjectURL(data);
-        window.open(url);
-      }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../services/api/login.service";
 import { TokenService } from "../services/auth/token.service";
-import { Router } from "@angular/router";
 import { NotificationService } from "../services/notification.service";
 
 @Component({
@@ -15,21 +14,20 @@ export class LoginComponent implements OnInit {
     inputPass: string = '12345678';
 
     constructor(private loginService: LoginService,
-        private router: Router,
-        private notificaiton: NotificationService){        
+        private notificaiton: NotificationService) {
     }
 
-    ngOnInit(){
+    ngOnInit() {
     }
 
     OnLogin() {
         this.loginService.login({
-                email: this.inputEmail,
-                password: this.inputPass
+            email: this.inputEmail,
+            password: this.inputPass
         }).subscribe({
-            next: (res) => { 
-                this.notificaiton.showSuccess("You logged in successfully");                
-             },
+            next: (res) => {
+                this.notificaiton.showSuccess("You logged in successfully");
+            },
             error: (err) => { this.notificaiton.showApiError(err) }
         });
     }

@@ -10,19 +10,18 @@ import { GetListOfDocumentsService } from "../services/api/getListOfDocuments.se
     templateUrl: './documents.component.html'
 })
 export class DocumentsComponent implements OnInit {
-    
+
     private generateTemporaryLinkService = inject(GenerateTemporaryLinkService);
     private getListOfDocumentsService = inject(GetListOfDocumentsService);
     private modalService = inject(NgbModal);
     private notificationService = inject(NotificationService);
 
-    
     currentDocument?: DocumentResponse;
     selectedExpirationTime?: number;
     temporaryLink?: string;
 
     totalCount: number = 0;
-    pageSize: number = 20;    
+    pageSize: number = 20;
 
     documents: DocumentResponse[] = []
 
@@ -30,12 +29,9 @@ export class DocumentsComponent implements OnInit {
         this.loadDocuments(1);
     }
 
-    loadDocuments(pageNumber: number){
+    loadDocuments(pageNumber: number) {
         this.getListOfDocumentsService.call(pageNumber, this.pageSize).subscribe({
-            next: res => { 
-
-                console.log(2, res);
-
+            next: res => {
                 this.documents = res.data;
                 this.totalCount = res.totalCount;
             },
@@ -43,21 +39,19 @@ export class DocumentsComponent implements OnInit {
         });
     }
 
-    OngenerateTempLinkButtonClicked(item: DocumentResponse, content?: TemplateRef<any>){
+    OngenerateTempLinkButtonClicked(item: DocumentResponse, content?: TemplateRef<any>) {
         this.temporaryLink = undefined;
         this.currentDocument = item;
 
         this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     }
 
-    OnGenerateTempLink()  {
-        if(this.currentDocument == null)
-        {
+    OnGenerateTempLink() {
+        if (this.currentDocument == null) {
             return;
         }
 
-        if(this.selectedExpirationTime == null)
-        {
+        if (this.selectedExpirationTime == null) {
             this.notificationService.showWarning("Please select ExpirationTime");
             return;
         }
@@ -68,16 +62,12 @@ export class DocumentsComponent implements OnInit {
         });
     }
 
-    CopyLinkToClipboard(){
+    CopyLinkToClipboard() {
         navigator.clipboard.writeText(this.temporaryLink!);
-
         this.notificationService.showSuccess("Link Copied");
     }
 
-    OnPageChange(pageNum: number){
-
-        console.log("OnPageChange", pageNum);
-
+    OnPageChange(pageNum: number) {
         this.loadDocuments(pageNum);
     }
 

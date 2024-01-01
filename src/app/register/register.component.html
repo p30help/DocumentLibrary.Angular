@@ -1,29 +1,28 @@
-
 <h2 class="display-6 text-center mb-4">Document Library</h2>
 
+<div class="row" style="margin-top: 15%;">
 
-<div class="row" style="margin-top: 15%;" >
+  <div class="col-md-4 offset-md-4 align-self-center">
 
-    <div class="col-md-4 offset-md-4 align-self-center">
-    
-      <h1 class="h3 mb-3 fw-normal">Please enter your data</h1>
-  
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="inputEmail">
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating mt-2">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="inputPass" >
-        <label for="floatingPassword">Password</label>
-      </div>
-      <div class="form-floating mt-2">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="inputPassRepeat" >
-        <label for="floatingPassword">Reapet Password</label>
-      </div>
-  
-      <a class="btn btn-primary w-100 py-2 mt-4" (click)="OnRegister()">Register</a>
-      <a class="btn btn-outline-secondary w-100 py-2 mt-2" routerLink="/Login" >Back</a>
-    
+    <h1 class="h3 mb-3 fw-normal">Please enter your data</h1>
 
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+        [(ngModel)]="inputEmail">
+      <label for="floatingInput">Email address</label>
     </div>
+    <div class="form-floating mt-2">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="inputPass">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating mt-2">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+        [(ngModel)]="inputPassRepeat">
+      <label for="floatingPassword">Reapet Password</label>
+    </div>
+
+    <a class="btn btn-primary w-100 py-2 mt-4" (click)="OnRegister()">Register</a>
+    <a class="btn btn-outline-secondary w-100 py-2 mt-2" routerLink="/Login">Back</a>
+
+  </div>
 </div>

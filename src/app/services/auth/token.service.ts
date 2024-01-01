@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class TokenService {    
+export class TokenService {
 
     accessTokenKey: string = "access_token";
 
@@ -9,8 +9,8 @@ export class TokenService {
         return localStorage.getItem(this.accessTokenKey);
     }
 
-    setToken(token: string): void  {
-        localStorage.setItem(this.accessTokenKey,token);
+    setToken(token: string): void {
+        localStorage.setItem(this.accessTokenKey, token);
     }
 
     clearToken() {
@@ -19,10 +19,9 @@ export class TokenService {
 
     isTokenEmpty(): boolean {
         let item = localStorage.getItem(this.accessTokenKey);
-        if(item == null || item == '')
-        {
+        if (item == null || item == '') {
             return true;
-        }            
+        }
 
         return false;
     }

@@ -2,25 +2,26 @@ import { Injectable } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
 @Injectable()
-export class NotificationService {    
+export class NotificationService {
 
     constructor(private toastr: ToastrService) { }
 
     showError(msg: string) {
-        
+
         this.toastr.error(msg, 'Error', {
             timeOut: 5000,
             progressBar: true,
             positionClass: 'toast-top-center'
-          });
+        });
     }
 
     showApiError(err: any) {
-        
-        var msg= "Unkown error";
 
-        if(err.error != null)
-        {
+        console.log("Errr", err);
+
+        var msg = "Unkown error";
+
+        if (err.error != null) {
             msg = err.error.errorMessage;
         }
 
@@ -28,7 +29,7 @@ export class NotificationService {
             timeOut: 5000,
             progressBar: true,
             positionClass: 'toast-top-center'
-          });
+        });
     }
 
     showWarning(msg: string) {
@@ -36,7 +37,7 @@ export class NotificationService {
             timeOut: 5000,
             progressBar: true,
             positionClass: 'toast-top-center'
-          });
+        });
     }
 
     showSuccess(msg: string) {
@@ -44,7 +45,7 @@ export class NotificationService {
             timeOut: 5000,
             progressBar: true,
             positionClass: 'toast-top-center'
-          });
+        });
     }
 
 }

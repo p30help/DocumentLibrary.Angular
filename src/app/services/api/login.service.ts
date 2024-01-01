@@ -9,8 +9,8 @@ import { Router } from "@angular/router";
 @Injectable()
 export class LoginService {
 
-    private http = inject( HttpClient);
-    private tokenService = inject( TokenService);
+    private http = inject(HttpClient);
+    private tokenService = inject(TokenService);
     private router = inject(Router);
 
     private apiUrl = "https://localhost:7090/api/login";
@@ -21,20 +21,19 @@ export class LoginService {
         var promise = firstValueFrom(res);
         promise.then(res => {
             this.tokenService.setToken(res.accessToken);
-            this.router.navigate(['Dashboard' ,'Documents']);
+            this.router.navigate(['Dashboard', 'Documents']);
         });
 
         return res;
     }
 
-    logout(){
-        this.tokenService.clearToken();    
+    logout() {
+        this.tokenService.clearToken();
         this.router.navigateByUrl("/Login");
     }
 
-    isLoggedIn() : boolean {
-        if(this.tokenService.isTokenEmpty())
-        {
+    isLoggedIn(): boolean {
+        if (this.tokenService.isTokenEmpty()) {
             return false;
         }
 

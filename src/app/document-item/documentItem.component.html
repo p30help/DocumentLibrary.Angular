@@ -1,11 +1,14 @@
 <div class="col">
   <div class="card shadow-sm">
-    <svg *ngIf="document?.thumbnailUrl == null" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-      <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
+    <svg *ngIf="document?.thumbnailUrl == null" class="bd-placeholder-img card-img-top" width="100%" height="225"
+      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+      preserveAspectRatio="xMidYMid slice" focusable="false">
+      <title>Placeholder</title>
+      <rect width="100%" height="100%" fill="#55595c" />
       <text x="38%" y="50%" fill="#eceeef" dy=".3em">No Thumbnail</text>
     </svg>
-    <div class="fill" *ngIf="document?.thumbnailUrl != null" >
-      <img  src="{{document?.thumbnailUrl}}" />
+    <div class="fill" *ngIf="document?.thumbnailUrl != null">
+      <img src="{{document?.thumbnailUrl}}" />
     </div>
     <div class="card-body">
       <p class="card-text lead">
@@ -13,15 +16,16 @@
       </p>
       <p class="card-text">
         <small>
-        Download Count: {{document?.downloadCount}}
+          Download Count: {{document?.downloadCount}}
         </small>
       </p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnDownload()"  >Download</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary"  (click)="OnGenerateTempLink()" >Generate Temp Link</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnDownload()">Download</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="OnGenerateTempLink()">Generate Temp
+            Link</button>
         </div>
-        
+
         <small class="text-body-secondary">
           {{document?.recordDate | date:'short' }}
         </small>
