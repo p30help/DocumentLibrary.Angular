@@ -82,7 +82,7 @@ export class AuthClientService {
 
     private checkToken(err: any) {
         if (err.status == 401) {
-            //this.loginService.logout();
+            this.loginService.logout();
         }
     }
 }

@@ -34,7 +34,7 @@
 
         </div>
 
-        <ngb-pagination class="d-flex justify-content-center mt-5 " [collectionSize]="totalCount" [pageSize]="pageSize"
+        <ngb-pagination class="d-flex justify-content-center mt-5 " [collectionSize]="totalCount" [pageSize]="pageSize" [page]="currentPageNum"
           (pageChange)="OnPageChange($event)" aria-label="Default pagination" />
 
       </div>

@@ -4,6 +4,7 @@ import { GenerateTemporaryLinkService } from "../services/api/generateTemporaryL
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotificationService } from "../services/notification.service";
 import { GetListOfDocumentsService } from "../services/api/getListOfDocuments.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: 'app-documents',
@@ -15,6 +16,8 @@ export class DocumentsComponent implements OnInit {
     private getListOfDocumentsService = inject(GetListOfDocumentsService);
     private modalService = inject(NgbModal);
     private notificationService = inject(NotificationService);
+    private activeRoute = inject(ActivatedRoute);
+    private router = inject(Router);
 
     currentDocument?: DocumentResponse;
     selectedExpirationTime?: number;
@@ -22,11 +25,22 @@ export class DocumentsComponent implements OnInit {
 
     totalCount: number = 0;
     pageSize: number = 20;
+    currentPageNum: number = 1;
 
     documents: DocumentResponse[] = []
 
     ngOnInit() {
-        this.loadDocuments(1);
+
+        this.activeRoute.queryParams.subscribe((data) => {
+            let pageNumber = data['pageNumber'];            
+
+            if (pageNumber == null || pageNumber == undefined) {
+                pageNumber = 1;
+            }
+
+            this.currentPageNum = pageNumber;
+            this.loadDocuments(pageNumber);
+        });
     }
 
     loadDocuments(pageNumber: number) {
@@ -68,7 +82,8 @@ export class DocumentsComponent implements OnInit {
     }
 
     OnPageChange(pageNum: number) {
-        this.loadDocuments(pageNum);
+
+        this.router.navigate(['/Dashboard/Documents'], { queryParams: { pageNumber: pageNum } });
     }
 
 }
