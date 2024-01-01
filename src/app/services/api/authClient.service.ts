@@ -3,6 +3,7 @@ import { Injectable, inject } from "@angular/core";
 import { Observable, tap } from "rxjs";
 import { TokenService } from "../auth/token.service";
 import { LoginService } from "./login.service";
+import { apiConfig } from "./apiConfig";
 
 @Injectable()
 export class AuthClientService {
@@ -16,7 +17,7 @@ export class AuthClientService {
         let token = this.tokenService.getToken();
         let headers = new HttpHeaders().set('Authorization', "Bearer " + token!);
 
-        var res = this.http.get<TRes>(url, { headers: headers, params: params })
+        var res = this.http.get<TRes>(this.generateUrl(url), { headers: headers, params: params })
             .pipe(
                 tap({
                     error: err => { this.checkToken(err) }
@@ -31,7 +32,7 @@ export class AuthClientService {
         let token = this.tokenService.getToken();
         let headers = new HttpHeaders().set('Authorization', "Bearer " + token!);
 
-        var res = this.http.get(url, { headers: headers, responseType: 'blob' })
+        var res = this.http.get(this.generateUrl(url), { headers: headers, responseType: 'blob' })
             .pipe(
                 tap({
                     error: err => { this.checkToken(err) }
@@ -46,7 +47,7 @@ export class AuthClientService {
         let token = this.tokenService.getToken();
         let headers = new HttpHeaders().set('Authorization', "Bearer " + token!);
 
-        var res = this.http.put<TRes>(url, body, { headers: headers, params: params })
+        var res = this.http.put<TRes>(this.generateUrl(url), body, { headers: headers, params: params })
             .pipe(
                 tap({
                     error: err => { this.checkToken(err) }
@@ -56,15 +57,17 @@ export class AuthClientService {
         return res;
     }
 
-    post<TRes, TBody>(url: string, body: TBody): Observable<TRes> {
+    post<TRes, TBody>(url: string, body: TBody, itemId: string): Observable<TRes> {
 
         let token = this.tokenService.getToken();
         let headers = new HttpHeaders().set('Authorization', "Bearer " + token!);
 
-        var res = this.http.post<TRes>(url, body, { headers: headers })
+        var res = this.http.post<TRes>(this.generateUrl(url), body, { headers: headers })
             .pipe(
                 tap({
-                    error: err => { this.checkToken(err) }
+                    error: err => { 
+                        err.itemId = itemId;
+                        this.checkToken(err) }
                 })
             );
 
@@ -73,9 +76,13 @@ export class AuthClientService {
     }
 
 
+    private generateUrl(url: string): string {
+        return apiConfig.apiUrl + url;
+    }
+
     private checkToken(err: any) {
         if (err.status == 401) {
-            this.loginService.logout();
+            //this.loginService.logout();
         }
     }
 }

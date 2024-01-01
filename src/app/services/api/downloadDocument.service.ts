@@ -6,7 +6,9 @@ import { AuthClientService } from "./authClient.service";
 export class DownloadDocumentService {
 
     private authClinetService = inject(AuthClientService);
-    private apiUrl = "https://localhost:7090/api/documents";
+    private apiUrl = "/api/documents";
+
+    
 
     call(documentId: string): Observable<any> {
 

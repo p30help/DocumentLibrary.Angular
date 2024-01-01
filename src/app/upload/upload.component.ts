@@ -40,7 +40,8 @@ export class UploadComponent {
               this.changeFileStatus(res.fileName, 1)
             },
             error: (err) => {
-              //this.changeFileStatus()
+              let msg = (err.error?.errorMessage != undefined) ? " - " + err.error?.errorMessage : "" ;
+              this.changeFileStatus(err.itemId, -1, "Server error" + msg);
             }
           });
 

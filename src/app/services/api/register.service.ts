@@ -3,11 +3,12 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { RegisterUserResponse } from "./responses/registerUserResponse";
 import { RegisterUserRequest } from "./requests/registerUserRequest";
+import { apiConfig } from "./apiConfig";
 
 @Injectable()
 export class RegisterService {
 
-    private apiUrl = "https://localhost:7090/api/users/addUser";
+    private apiUrl = apiConfig.apiUrl + "/api/users/addUser";
     
     constructor(private http: HttpClient){    
     }

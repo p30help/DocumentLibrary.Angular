@@ -8,7 +8,7 @@ import { AuthClientService } from "./authClient.service";
 export class GenerateTemporaryLinkService {
 
     private authClinetService = inject(AuthClientService);
-    private apiUrl = "https://localhost:7090/api/documents/generateTemporaryLink";
+    private apiUrl = "/api/documents/generateTemporaryLink";
 
     call(documentId: string, expirationTime: number): Observable<GenerateTemporaryLinkResponse> {
 

@@ -17,8 +17,8 @@
 
   <div class="center">
     <!-- dropZoneClassName="drop-zone" -->
-    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
-      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" accept=".png,.gif,.jpg,.jpeg,.pdf,.doc,.docx,.xls,.xlsx,.txt"    >
+      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector"  >
         Drag and drop your documents here or
         <button type="button" class="btn btn-outline-primary ms-2" (click)="openFileSelector()">Browse Files</button>
       </ng-template>

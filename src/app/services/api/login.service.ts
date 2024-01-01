@@ -5,6 +5,7 @@ import { Observable, firstValueFrom } from "rxjs";
 import { LoginRequest } from "./requests/loginRequest";
 import { TokenService } from "../auth/token.service";
 import { Router } from "@angular/router";
+import { apiConfig } from "./apiConfig";
 
 @Injectable()
 export class LoginService {
@@ -13,7 +14,7 @@ export class LoginService {
     private tokenService = inject(TokenService);
     private router = inject(Router);
 
-    private apiUrl = "https://localhost:7090/api/login";
+    private apiUrl = apiConfig.apiUrl + "/api/login";
 
     login(request: LoginRequest): Observable<LoginResponse> {
         var res = this.http.post<LoginResponse>(this.apiUrl, request);

@@ -9,7 +9,7 @@ export class GetListOfDocumentsService {
 
     private authClinetService = inject(AuthClientService);
 
-    private apiUrl = "https://localhost:7090/api/documents/GetListOfDocuments";
+    private apiUrl = "/api/documents/GetListOfDocuments";
 
     call(pageNumber: number, pageSize: number): Observable<GetListOfDocumentsResponse> {
 
