@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { LoginResponse } from "./responses/loginResponse";
-import { Observable, firstValueFrom } from "rxjs";
+import { Observable, firstValueFrom, tap } from "rxjs";
 import { LoginRequest } from "./requests/loginRequest";
 import { TokenService } from "../auth/token.service";
 import { Router } from "@angular/router";
@@ -17,14 +17,16 @@ export class LoginService {
     private apiUrl = apiConfig.apiUrl + "/api/login";
 
     login(request: LoginRequest): Observable<LoginResponse> {
-        var res = this.http.post<LoginResponse>(this.apiUrl, request);
-
-        var promise = firstValueFrom(res);
-        promise.then(res => {
-            this.tokenService.setToken(res.accessToken);
-            this.router.navigate(['Dashboard', 'Documents']);
-        });
-
+        var res = this.http.post<LoginResponse>(this.apiUrl, request)
+            .pipe(
+                tap({
+                    next: (res) => {
+                        this.tokenService.setToken(res.accessToken);
+                        this.router.navigate(['Dashboard', 'Documents']);
+                    }
+                })
+            );
+            
         return res;
     }
 

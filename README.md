@@ -1,26 +1,45 @@
-# DocumentsLibrary
+# Document Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+This project is a UI side of Document Liabrary project. If you want to see Back-end side go to <a href="https://github.com/p30help/DocumentLibrary.Backend">DocumentLibrary.Backend</a>
 
-## Development server
+Also it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
+- Node js v20 or later
 
-## Code scaffolding
+## Installation
+At first you should run Back-end side of the project hence go to <a href="https://github.com/p30help/DocumentLibrary.Backend">DocumentLibrary.Backend</a> and follow the steps. After running the back-end project follow these steps:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Step 1: Clone the repository
+
+Open the command prompt (``Cmd``) in your desired directory and execute the following command:
+
+``git clone https://github.com/p30help/DocumentLibrary.Angular.git``
+
+### Step 2: Get all of npm packages
+Execute the following commands:
+
+``cd DocumentLibrary.Angular``
+
+Then
+
+``npm install``
+
+Tt maybe take time, be patient and enjoy your moments :)
+
+### Step 3: Run Angular server
+
+Run `ng serve` for running dev server. 
+
+After the project run succesfully, Navigate to `http://localhost:4200/` to see the result.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+If you want to build and deploy the project on your server you can run `ng build` command. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 

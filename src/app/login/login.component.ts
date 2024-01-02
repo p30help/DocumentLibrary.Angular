@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
     private loginService = inject(LoginService);
     private notificaiton = inject(NotificationService);
 
-    inputEmail: string = 'radi@local.me';
-    inputPass: string = '12345678';
+    inputEmail: string = '';
+    inputPass: string = '';
 
     ngOnInit() {
     }

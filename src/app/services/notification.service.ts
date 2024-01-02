@@ -20,7 +20,12 @@ export class NotificationService {
         var msg = "Unkown error";
 
         if (err.error != null) {
-            msg = err.error.errorMessage;
+            if (err.error.errorMessage == null) {
+                msg = err.message;
+            }
+            else {
+                msg = err.error.errorMessage;
+            }
         }
 
         this.toastr.error(msg, 'Error', {
